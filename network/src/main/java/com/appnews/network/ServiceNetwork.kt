@@ -4,21 +4,21 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 private const val NEWS_API_URL = "https://newsapi.org/"
 private const val API_VERSION = "v2/"
 
-class Service {
+class ServiceNetwork {
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(NEWS_API_URL + API_VERSION)
         .client(getOkHttpClient())
-        .addConverterFactory(MoshiConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun <API> createService(apiClass: Class<API>): API {
+    fun <T> createService(apiClass: Class<T>): T {
         return retrofit.create(apiClass)
     }
 

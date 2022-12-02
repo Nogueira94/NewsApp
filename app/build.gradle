@@ -29,11 +29,32 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    viewBinding {
+        enabled = true
+    }
+
 }
 
 dependencies {
 
+    implementation project(":network:")
+    implementation project(":designsystem:")
+
+    implementation "androidx.navigation:navigation-fragment-ktx:${versions.nav_version}"
+    implementation "androidx.navigation:navigation-ui-ktx:${versions.nav_version}"
+
+
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycleExtensionsVersion}"
+
     implementation "androidx.core:core-ktx:${versions.ktx}"
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"
     implementation "com.google.android.material:material:${versions.material}"
+
+    //KOIN
+    implementation "io.insert-koin:koin-android:${versions.koin}"
+    implementation "io.insert-koin:koin-android-compat:${versions.koin}"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 }

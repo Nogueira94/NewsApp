@@ -16,3 +16,4 @@ rootProject.name = "AppNews"
 include ':app'
 include ':network'
 include ':designsystem'
+include ':sec'

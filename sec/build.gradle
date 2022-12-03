@@ -27,19 +27,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    viewBinding {
-        enabled = true
-    }
-
 }
 
 dependencies {
 
-    api "com.github.bumptech.glide:recyclerview-integration:${versions.glide}"
     implementation "androidx.core:core-ktx:${versions.ktx}"
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"
     implementation "com.google.android.material:material:${versions.material}"
-
-
+    api "androidx.biometric:biometric-ktx:${versions.biometric}"
 }

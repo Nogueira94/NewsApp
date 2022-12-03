@@ -7,6 +7,8 @@ import com.appnews.domain.GetHeadlines
 import com.appnews.domain.GetHeadlinesUseCase
 import com.appnews.network.ServiceNetwork
 import com.appnews.presenter.viewmodels.HomeViewModel
+import com.sec.BiometricAuth
+import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
 val appNewsModule = module {
@@ -19,4 +21,8 @@ val appNewsModule = module {
 
     single { HomeViewModel(get()) }
 
+}
+
+val secModule = module {
+    single<BiometricAuth> { BiometricAuth(get()) }
 }

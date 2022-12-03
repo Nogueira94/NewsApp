@@ -12,13 +12,31 @@ import com.appnews.domain.model.Article
 import com.appnews.domain.model.StateView
 import com.appnews.presenter.adapter.TopHeadlinesAdapter
 import com.appnews.presenter.viewmodels.HomeViewModel
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import com.sec.BiometricAuth
+import com.sec.BiometricResponse
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-    private val viewModel : HomeViewModel by sharedViewModel()
+    private val viewModel : HomeViewModel by viewModel()
+
+    private val biometricAuth : BiometricAuth by inject()
 
     private lateinit var binding : FragmentHomeBinding
+
+    private fun authValidate() {
+        biometricAuth.biometricAuth(this){ biometricResponse ->
+            when(biometricResponse){
+                BiometricResponse.SUCCESS -> {
+                    setupView()
+                }
+                BiometricResponse.ERROR -> {
+                    requireActivity().finish()
+                }
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +44,8 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        setupView()
+        authValidate()
+
 
         return binding.root
     }

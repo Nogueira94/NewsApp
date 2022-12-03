@@ -13,7 +13,7 @@ class App : Application() {
     private fun setupKoin() {
         startKoin{
             androidContext(this@App)
-            modules(listOf(appNewsModule))
+            modules(listOf(appNewsModule, secModule))
         }
     }
 }

@@ -40,6 +40,7 @@ android {
 dependencies {
 
     implementation project(":network:")
+    implementation project(":sec:")
     implementation project(":designsystem:")
 
     implementation "androidx.navigation:navigation-fragment-ktx:${versions.nav_version}"
@@ -57,5 +58,11 @@ dependencies {
     //KOIN
     implementation "io.insert-koin:koin-android:${versions.koin}"
     implementation "io.insert-koin:koin-android-compat:${versions.koin}"
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "io.insert-koin:koin-androidx-workmanager:${versions.koin}"
+    implementation "io.insert-koin:koin-androidx-navigation:${versions.koin}"
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+
 }

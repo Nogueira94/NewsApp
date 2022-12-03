@@ -1,14 +1,12 @@
 package com.appnews.presenter.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.appnews.R
 import com.appnews.databinding.FragmentHomeBinding
 import com.appnews.domain.model.Article
 import com.appnews.domain.model.StateView
@@ -59,7 +57,8 @@ class HomeFragment : Fragment() {
         when(stateView){
             is StateView.Loading -> {}
             is StateView.DataLoaded -> {
-                binding.rvArticles.adapter = TopHeadlinesAdapter(stateView.data)
+                binding.rvArticles.adapter = TopHeadlinesAdapter(stateView.data,this)
+
             }
             is StateView.Error -> {}
             else -> {}

@@ -1,7 +1,10 @@
 package com.appnews.domain.model
 
+import android.os.Parcelable
 import com.designsystem.contracts.HeadlineCardContract
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Article (
     val sourceName : String,
     var author: String,
@@ -11,4 +14,4 @@ data class Article (
     override var imageUrl: String,
     var publishedAt: String,
     var content: String
-) : HeadlineCardContract
+) : HeadlineCardContract, Parcelable

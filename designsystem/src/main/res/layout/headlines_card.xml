@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@drawable/background_ripple"
     android:paddingHorizontal="@dimen/horizontal_padding"
     android:paddingVertical="@dimen/vertical_padding">
 
@@ -36,7 +37,5 @@
             android:scaleType="fitCenter" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -2,11 +2,13 @@ package com.designsystem
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.designsystem.contracts.HeadlineCardContract
 
 class HeadlinesCard @JvmOverloads constructor(
@@ -30,6 +32,7 @@ class HeadlinesCard @JvmOverloads constructor(
         desc.text = article.description
         Glide.with(image.context).asBitmap()
             .load(article.imageUrl)
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(image)
     }
 

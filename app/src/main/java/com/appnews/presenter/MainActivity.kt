@@ -1,7 +1,7 @@
 package com.appnews.presenter
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.appnews.R
 
 class MainActivity : AppCompatActivity() {

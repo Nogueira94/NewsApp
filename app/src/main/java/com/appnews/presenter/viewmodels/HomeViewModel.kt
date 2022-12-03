@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.appnews.domain.GetHeadlines
 import com.appnews.domain.GetHeadlinesUseCase
 import com.appnews.domain.model.Article
 import com.appnews.domain.model.StateView

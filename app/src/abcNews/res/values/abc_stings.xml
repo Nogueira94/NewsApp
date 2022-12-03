@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="source">abc-news</string>
+    <string name="source_display_name">Abc News</string>
+</resources>

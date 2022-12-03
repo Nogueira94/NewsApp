@@ -15,7 +15,7 @@ val appNewsModule = module {
 
     single { ServiceNetwork().createService(TopHeadlinesApi::class.java) }
 
-    single<TopHeadlinesRepo> { TopHeadlinesRepoImpl(get()) }
+    single<TopHeadlinesRepo> { TopHeadlinesRepoImpl(get(),androidApplication()) }
 
     single<GetHeadlinesUseCase> { GetHeadlines(get()) }
 

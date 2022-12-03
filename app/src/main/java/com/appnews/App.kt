@@ -16,4 +16,9 @@ class App : Application() {
             modules(listOf(appNewsModule, secModule))
         }
     }
+    
+
+    companion object{
+        var ALREADY_AUTH = false
+    }
 }

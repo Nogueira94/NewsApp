@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.appnews.App.Companion.ALREADY_AUTH
 import com.appnews.databinding.FragmentHomeBinding
 import com.appnews.domain.model.Article
 import com.appnews.domain.model.StateView
@@ -29,6 +30,7 @@ class HomeFragment : Fragment() {
         biometricAuth.biometricAuth(this){ biometricResponse ->
             when(biometricResponse){
                 BiometricResponse.SUCCESS -> {
+                    ALREADY_AUTH = true
                     setupView()
                 }
                 BiometricResponse.ERROR -> {
@@ -43,9 +45,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
-
-        authValidate()
-
+        if(!ALREADY_AUTH) {
+            authValidate()
+        } else {
+            setupView()
+        }
 
         return binding.root
     }

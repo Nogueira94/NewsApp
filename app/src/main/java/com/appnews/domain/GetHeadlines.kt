@@ -8,7 +8,9 @@ import com.appnews.domain.model.StateView
 class GetHeadlines(private val topHeadlinesRepo: TopHeadlinesRepo) : GetHeadlinesUseCase {
     override suspend fun invoke() : StateView<List<Article>> {
         return when(val articleList = topHeadlinesRepo.getHeadlines()){
-            is NetworkResult.Success -> StateView.DataLoaded(articleList.data)
+            is NetworkResult.Success -> StateView.DataLoaded(articleList.data.sortedByDescending {
+                it.publishedAt
+            })
             is NetworkResult.Error -> StateView.Error(articleList.exception)
         }
     }

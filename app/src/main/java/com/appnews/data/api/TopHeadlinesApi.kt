@@ -8,6 +8,6 @@ import retrofit2.http.Query
 interface TopHeadlinesApi {
     @GET("top-headlines")
     suspend fun getHeadlines(
-        @Query("sources") source : String = "bbc-news"
+        @Query("sources") source : String
     ) : Response<NewsApiResponse>
 }

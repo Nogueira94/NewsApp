@@ -35,6 +35,20 @@ android {
         enabled = true
     }
 
+    productFlavors{
+        flavorDimensions 'source'
+        bbcNews{
+            dimension 'source'
+            applicationIdSuffix '.bbc'
+            manifestPlaceholders.appName = "BBC News"
+        }
+        abcNews{
+            dimension 'source'
+            applicationIdSuffix '.abc'
+            manifestPlaceholders.appName = "ABC News"
+        }
+    }
+
 }
 
 dependencies {
@@ -61,7 +75,11 @@ dependencies {
     implementation "io.insert-koin:koin-androidx-workmanager:${versions.koin}"
     implementation "io.insert-koin:koin-androidx-navigation:${versions.koin}"
 
-
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutines_test}"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "io.mockk:mockk-android:${versions.mockk}"
+    testImplementation "io.mockk:mockk-agent:${versions.mockk}"
+    testImplementation "io.mockk:mockk:${versions.mockk}"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
 

@@ -35,16 +35,20 @@ android {
         enabled = true
     }
 
+    flavorDimensions 'source'
+
     productFlavors{
-        flavorDimensions 'source'
+
         bbcNews{
             dimension 'source'
             applicationIdSuffix '.bbc'
+            buildConfigField "String", "API_SOURCE", '"bbc-news"'
             manifestPlaceholders.appName = "BBC News"
         }
         abcNews{
             dimension 'source'
             applicationIdSuffix '.abc'
+            buildConfigField "String", "API_SOURCE", '"abc-news"'
             manifestPlaceholders.appName = "ABC News"
         }
     }

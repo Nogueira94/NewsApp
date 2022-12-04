@@ -1,8 +1,5 @@
 package com.appnews.data
 
-import android.content.Context
-import android.content.res.Resources
-import com.appnews.R
 import com.appnews.data.api.TopHeadlinesApi
 import com.appnews.data.model.NetworkResult
 import com.appnews.data.model.StatusResponse
@@ -12,11 +9,10 @@ import com.appnews.network.ApiResult
 import com.appnews.network.parseResult
 
 class TopHeadlinesRepoImpl(
-    private val service: TopHeadlinesApi,
-    private val context: Context
+    private val service: TopHeadlinesApi
 ) : TopHeadlinesRepo {
     override suspend fun getHeadlines(): NetworkResult<List<Article>> {
-        val result = service.getHeadlines(context.getString(R.string.source)).parseResult()
+        val result = service.getHeadlines().parseResult()
 
         return when(result) {
             is ApiResult.Success -> {

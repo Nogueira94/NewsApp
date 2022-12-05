@@ -17,8 +17,6 @@ class HomeViewModel (private val getHeadlines : GetHeadlinesUseCase) : ViewModel
 
     fun getArticles(){
         viewModelScope.launch {
-            _headlinesState.value = StateView.Loading
-
             when(val result = getHeadlines.invoke()){
                 is StateView.DataLoaded -> _headlinesState.value = result
                 is StateView.Error -> _headlinesState.value = result

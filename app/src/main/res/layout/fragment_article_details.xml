@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".presenter.ui.ArticleDetailsFragment"
-    android:paddingHorizontal="@dimen/horizontal_padding">
-
-    <TextView
-        android:id="@+id/headline_tile"
+    android:paddingHorizontal="@dimen/horizontal_padding"
+    android:fillViewport="true">
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/text_size_large"
-        tools:text="Quiz of the week: Dua Lipa became a citizen of which country?" />
+        android:orientation="vertical"
+        tools:context=".presenter.ui.ArticleDetailsFragment">
 
-    <ImageView
-        android:id="@+id/headline_img"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter" />
+        <TextView
+            android:id="@+id/headline_tile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_large"
+            tools:text="Quiz of the week: Dua Lipa became a citizen of which country?" />
 
-    <TextView
-        android:id="@+id/headline_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/text_size_mid"
-        tools:text="How closely have you been paying attention to what's been going on over the past seven days?" />
+        <ImageView
+            android:id="@+id/headline_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter" />
 
-    <TextView
-        android:id="@+id/headline_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/text_size_mid"
-        tools:text="How closely have you been paying attention to what's been going on over the past seven days?" />
+        <TextView
+            android:id="@+id/headline_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_mid"
+            tools:text="How closely have you been paying attention to what's been going on over the past seven days?" />
 
+        <TextView
+            android:id="@+id/headline_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_mid"
+            tools:text="How closely have you been paying attention to what's been going on over the past seven days?" />
 
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

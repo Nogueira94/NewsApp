@@ -13,6 +13,7 @@ import com.appnews.domain.model.Article
 import com.appnews.domain.model.StateView
 import com.appnews.presenter.adapter.TopHeadlinesAdapter
 import com.appnews.presenter.viewmodels.HomeViewModel
+import com.designsystem.snackbar.AppSnackbar
 import com.sec.BiometricAuth
 import com.sec.BiometricResponse
 import org.koin.android.ext.android.inject
@@ -34,7 +35,13 @@ class HomeFragment : Fragment() {
                     setupView()
                 }
                 BiometricResponse.ERROR -> {
-                    requireActivity().finish()
+                    AppSnackbar.make(
+                        requireView() as ViewGroup,
+                        "Error",
+                        requireContext().getDrawable(com.designsystem.R.drawable.ic_error),
+                        "Ok"){
+                        requireActivity().finish()
+                    }.show()
                 }
             }
         }
@@ -78,12 +85,19 @@ class HomeFragment : Fragment() {
 
     private fun populateView(stateView: StateView<List<Article>>?) {
         when(stateView){
-            is StateView.Loading -> {}
             is StateView.DataLoaded -> {
                 binding.rvArticles.adapter = TopHeadlinesAdapter(stateView.data,this)
 
             }
-            is StateView.Error -> {}
+            is StateView.Error -> {
+                AppSnackbar.make(
+                    requireView() as ViewGroup,
+                    "Error",
+                    requireContext().getDrawable(com.designsystem.R.drawable.ic_error),
+                    "Ok"){
+                    requireActivity().finish()
+                }.show()
+            }
             else -> {}
         }
     }

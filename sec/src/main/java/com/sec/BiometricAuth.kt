@@ -10,7 +10,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import java.util.concurrent.Executor
 
+private const val NO_FINGERPRINT_ENROLLED = 11
+
 class BiometricAuth(context: Context) {
+
+
 
     private var biometricManager : BiometricManager = BiometricManager.from(context)
     private var executor : Executor = ContextCompat.getMainExecutor(context)
@@ -18,6 +22,9 @@ class BiometricAuth(context: Context) {
     fun biometricAuth(fragment: Fragment,callback : (BiometricResponse) -> Unit){
         when(biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)){
             BiometricManager.BIOMETRIC_SUCCESS -> {
+                validBiometric(fragment,callback)
+            }
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED ->{
                 validBiometric(fragment,callback)
             }
             BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
@@ -40,7 +47,11 @@ class BiometricAuth(context: Context) {
 
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    callback.invoke(BiometricResponse.ERROR)
+                    if(errorCode != NO_FINGERPRINT_ENROLLED) {
+                        callback.invoke(BiometricResponse.ERROR)
+                    } else {
+                        callback.invoke(BiometricResponse.SUCCESS)
+                    }
                 }
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
